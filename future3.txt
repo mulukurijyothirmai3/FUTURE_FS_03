@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spice Delight Restaurant</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background: #fff8f0;
+}
+
+/* HEADER */
+header {
+    background: #8B0000;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 15px;
+}
+
+.cart-box, .total-box {
+    background: white;
+    color: #8B0000;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+.call-btn {
+    background: yellow;
+    padding: 5px 10px;
+    border-radius: 10px;
+    text-decoration: none;
+    color: black;
+}
+
+nav a {
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+/* SECTION */
+.section {
+    padding: 40px;
+    text-align: center;
+}
+
+/* HOME */
+#home {
+    background: url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5') no-repeat center/cover;
+    color: white;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* MENU */
+#menu {
+    background: #ffe5b4;
+}
+
+.menu-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.menu-item {
+    background: white;
+    margin: 15px;
+    padding: 15px;
+    width: 230px;
+    border-radius: 12px;
+    box-shadow: 0 0 12px rgba(0,0,0,0.15);
+}
+
+.menu-item img {
+    width: 100%;
+    height: 150px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.price-order {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+button {
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+}
+
+.add { background: green; color: white; }
+.remove { background: gray; color: white; }
+
+/* MAP */
+.map iframe {
+    width: 100%;
+    height: 300px;
+}
+
+/* FORM */
+form {
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    margin: auto;
+}
+
+input, textarea {
+    margin: 10px 0;
+    padding: 10px;
+}
+
+footer {
+    background: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<div class="top-bar">
+    <div class="cart-box">🛒 Items: <span id="count">0</span></div>
+    <div class="total-box">💰 ₹<span id="total">0</span></div>
+    <a href="tel:9876543210" class="call-btn">📞 Call Now</a>
+</div>
+
+<h1>🍽️ Spice Delight</h1>
+
+<nav>
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#menu">Menu</a>
+    <a href="#contact">Contact</a>
+</nav>
+
+</header>
+
+<!-- HOME -->
+<section id="home" class="section">
+<h2>Welcome to Spice Delight</h2>
+<p>Delicious food made with love ❤️</p>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="section">
+<h2>About Us</h2>
+<p>We provide fresh, hygienic, and delicious food with authentic taste. Our mission is to deliver the best dining experience.</p>
+</section>
+
+<!-- MENU -->
+<section id="menu" class="section">
+<h2>Our Menu</h2>
+
+<div class="menu-container">
+
+<div class="menu-item">
+<img src="https://images.unsplash.com/photo-1604382355076-af4b0eb60143">
+<h3>Pizza</h3>
+<div class="price-order">
+<p>₹250</p>
+<div>
+<button class="add" onclick="addItem(250)">+</button>
+<button class="remove" onclick="removeItem(250)">-</button>
+</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="https://images.unsplash.com/photo-1550547660-d9450f859349">
+<h3>Burger</h3>
+<div class="price-order">
+<p>₹150</p>
+<div>
+<button class="add" onclick="addItem(150)">+</button>
+<button class="remove" onclick="removeItem(150)">-</button>
+</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="https://media.istockphoto.com/id/471016649/photo/penne-pasta.jpg?s=612x612&w=0&k=20&c=0l2GCai_K-IUmGvWtxhpsVEy01IH7t-Ny3u9ykuTR_0=">
+<h3>Pasta</h3>
+<div class="price-order">
+<p>₹200</p>
+<div>
+<button class="add" onclick="addItem(200)">+</button>
+<button class="remove" onclick="removeItem(200)">-</button>
+</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="https://img.freepik.com/free-psd/delicious-beef-noodle-soup-culinary-delight_191095-80164.jpg?w=360">
+<h3>Noodles</h3>
+<div class="price-order">
+<p>₹180</p>
+<div>
+<button class="add" onclick="addItem(180)">+</button>
+<button class="remove" onclick="removeItem(180)">-</button>
+</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="https://www.chilitochoc.com/wp-content/uploads/2025/01/hot-honey-chicken-wings-with-sauce-and-chili-flakes.jpg">
+<h3>Chicken Wings</h3>
+<div class="price-order">
+<p>₹300</p>
+<div>
+<button class="add" onclick="addItem(300)">+</button>
+<button class="remove" onclick="removeItem(300)">-</button>
+</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrCoxLCEYMWsOUzfZDy9vpIlO2J-gpjuxxkA&s">
+<h3>Sandwich</h3>
+<div class="price-order">
+<p>₹120</p>
+<div>
+<button class="add" onclick="addItem(120)">+</button>
+<button class="remove" onclick="removeItem(120)">-</button>
+</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="https://static.vecteezy.com/system/resources/thumbnails/039/655/363/small/ai-generated-freshly-fried-gourmet-french-fries-a-crunchy-and-unhealthy-snack-generated-by-ai-photo.jpg">
+<h3>Frenchfries</h3>
+<div class="price-order">
+<p>₹180</p>
+<div>
+<button class="add" onclick="addItem(180)">+</button>
+<button class="remove" onclick="removeItem(180)">-</button>
+</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="https://static.vecteezy.com/system/resources/thumbnails/025/276/210/small/three-milkshakes-chocolate-strawberry-professional-foodgraphy-ai-generated-photo.jpg">
+<h3>Milkshakes</h3>
+<div class="price-order">
+<p>₹250</p>
+<div>
+<button class="add" onclick="addItem(350)">+</button>
+<button class="remove" onclick="removeItem(350)">-</button>
+</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="https://www.shutterstock.com/image-photo/assorted-large-pieces-different-cakes-260nw-1113066950.jpg">
+<h3>Cakes</h3>
+<div class="price-order">
+<p>₹180</p>
+<div>
+<button class="add" onclick="addItem(180)">+</button>
+<button class="remove" onclick="removeItem(180)">-</button>
+</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="https://www.shutterstock.com/image-photo/strawberry-chocolate-vanilla-ice-cream-260nw-2435608701.jpg">
+<h3>Ice Cream</h3>
+<div class="price-order">
+<p>₹260</p>
+<div>
+<button class="add" onclick="addItem(260)">+</button>
+<button class="remove" onclick="removeItem(260)">-</button>
+</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="https://www.shutterstock.com/image-photo/poznan-pol-oct-31-2024-260nw-2542841489.jpg">
+<h3> Cool Drinks</h3>
+<div class="price-order">
+<p>₹100</p>
+<div>
+<button class="add" onclick="addItem(100)">+</button>
+<button class="remove" onclick="removeItem(100)">-</button>
+</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="https://i.ytimg.com/vi/xhZxK29apqU/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLDvXpdlPf5AJiMNxw6JVUJE6SGumQ">
+<h3>Pani Puri</h3>
+<div class="price-order">
+<p>₹50</p>
+<div>
+<button class="add" onclick="addItem(50)">+</button>
+<button class="remove" onclick="removeItem(50)">-</button>
+</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="https://c.ndtvimg.com/2023-03/0m65kep_samosa_625x300_10_March_23.jpg">
+<h3>Samosa</h3>
+<div class="price-order">
+<p>₹80</p>
+<div>
+<button class="add" onclick="addItem(80)">+</button>
+<button class="remove" onclick="removeItem(80)">-</button>
+</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="https://static.toiimg.com/thumb/53099699.cms?width=1200&height=900">
+<h3>Jalebi</h3>
+<div class="price-order">
+<p>₹60</p>
+<div>
+<button class="add" onclick="addItem(60)">+</button>
+<button class="remove" onclick="removeItem(60)">-</button>
+</div>
+</div>
+</div>
+
+</div>
+</section>
+
+<!-- MAP -->
+<section class="section">
+<h2>📍 Our Location</h2>
+<div class="map">
+<iframe src="https://maps.google.com/maps?q=Pedagadi&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>
+</div>
+</section>
+
+<!-- CONTACT + RESERVATION -->
+<section id="contact" class="section">
+<h2>Contact & Reservation</h2>
+
+<form onsubmit="reserveTable(event)">
+<input type="text" placeholder="Customer Name" required>
+<input type="tel" placeholder="Phone Number" required>
+<input type="number" placeholder="Number of People" required>
+<input type="date" required>
+<input type="time" required>
+<textarea placeholder="Special Request"></textarea>
+
+<button>Reserve Table</button>
+</form>
+
+</section>
+
+<footer>
+<p>📍 Pedagadi | 📞 9876543210</p>
+<p>© 2026 Spice Delight Restaurant</p>
+</footer>
+
+<script>
+let count = 0;
+let total = 0;
+
+function addItem(price) {
+    count++;
+    total += price;
+    updateCart();
+}
+
+function removeItem(price) {
+    if(count > 0){
+        count--;
+        total -= price;
+        if(total < 0) total = 0;
+        updateCart();
+    }
+}
+
+function updateCart() {
+    document.getElementById("count").innerText = count;
+    document.getElementById("total").innerText = total;
+}
+
+function reserveTable(event) {
+    event.preventDefault();
+    alert("Table Reserved Successfully! 🍽️");
+}
+</script>
+
+</body>
+</html>
